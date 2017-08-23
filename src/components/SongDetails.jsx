@@ -8,6 +8,7 @@ class SongDetails extends React.Component {
 
     return (
       <div>
+      <h1>{this.props.chartPosition}</h1>
       <h3>{this.props.song["im:name"].label}</h3>
       <h3>{this.props.song["im:artist"].label}</h3>
       <img src={this.props.song["im:image"][2].label} alt={this.props.song["im:artist"]}/>

@@ -7,7 +7,8 @@ class SongContainer extends React.Component {
         super(props);
         this.state = {
             songs: [],
-            focusSong: null
+            focusSong: null,
+            chartPosition: null
         };
     }
 
@@ -22,27 +23,28 @@ componentDidMount(){
             const data = JSON.parse(jsonString);
             this.setState({
                 songs: data.feed.entry,
-                focusSong: data[0]
+                focusSong: data[0],
             })
         }
     });
     request.send();
 }
 
-setFocusSong(song){
+setFocusSong(song, index){
     this.setState({
-        focusSong: song
+        focusSong: song,
+        chartPosition: parseInt(index)+1
     });
 }
 
 render(){
     return(
     <div>
-    <h2>Itunes Top 20 Songs</h2>
+    <h2>itunes Top 20 Songs</h2>
     <SongSelector songs={this.state.songs}
     selectSong={this.setFocusSong.bind(this)}
     />
-    <SongDetails song={this.state.focusSong}/>
+    <SongDetails song={this.state.focusSong} chartPosition={this.state.chartPosition}/>
     </div>
     );
 }

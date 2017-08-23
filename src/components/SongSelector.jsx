@@ -18,7 +18,7 @@ class SongSelector extends React.Component {
         selectedIndex: newIndex
       });
       const selectedSong = this.props.songs[newIndex];
-      this.props.selectSong(selectedSong);
+      this.props.selectSong(selectedSong, newIndex);
     }
 
 
@@ -31,6 +31,7 @@ class SongSelector extends React.Component {
       <select id="songs" 
       value={this.state.selectedIndex} 
       onChange={this.handleChange.bind(this)}
+      
       >
         {songs}
       </select>
