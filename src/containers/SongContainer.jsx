@@ -21,7 +21,7 @@ componentDidMount(){
             const jsonString = request.responseText;
             const data = JSON.parse(jsonString);
             this.setState({
-                songs: data,
+                songs: data.feed.entry,
                 focusSong: data[0]
             })
         }
